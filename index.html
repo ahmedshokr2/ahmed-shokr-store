@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0a0d">
+  <title>Ahmed Shokr | متجر الباقات</title>
+  <meta name="description" content="متجر Ahmed Shokr لطلب باقات الموبايل بسهولة.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Ahmed Shokr">
+      <span class="brand-mark">AS</span>
+      <span><b>Ahmed <i>Shokr</i></b><small>MOBILE BUNDLES STORE</small></span>
+    </a>
+    <nav><a href="#bundles">الباقات</a><a href="#how">طريقة الطلب</a><a href="#contact">تواصل معنا</a></nav>
+    <a class="cart-pill" href="#order">طلبك <span id="cartCount">0</span></a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="dot"></span> متجر الباقات الإلكترونية</span>
+        <h1>باقتك أقرب.<br><em>أسهل وأسرع.</em></h1>
+        <p>اختار الباقة المناسبة، اكتب رقمك، وراجع تفاصيل طلبك قبل الإرسال.</p>
+        <a class="primary-btn" href="#bundles">تصفّح الباقات <span>←</span></a>
+        <div class="hero-points"><span>✓ خطوات واضحة</span><span>✓ مراجعة الطلب</span><span>✓ دعم مباشر</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orb orb1"></div><div class="orb orb2"></div>
+        <div class="phone"><div class="speaker"></div><div class="phone-logo">◉</div><b>Vodafone</b><small>FLEX BUNDLES</small><div class="signal">ϟ</div></div>
+        <div class="floating-card">⚡ <span>تجربة سهلة</span></div>
+        <div class="red-glow"></div>
+      </div>
+    </section>
+
+    <section class="section" id="bundles">
+      <div class="section-head"><div><span class="eyebrow">اختار اللي يناسبك</span><h2>الباقات المتاحة</h2></div><span class="subtle">الأسعار بالجنيه المصري</span></div>
+      <div class="bundle-grid" id="bundleGrid"></div>
+      <p class="fine-print">الأسعار المعروضة قابلة للتعديل من ملف <code>script.js</code>. تأكد من السعر وشروط الباقة قبل تأكيد الطلب.</p>
+    </section>
+
+    <section class="order-layout" id="order">
+      <div class="order-info">
+        <span class="eyebrow">خطوة أخيرة</span>
+        <h2>جهّز طلبك</h2>
+        <p>اختار باقة ثم أدخل رقم الموبايل للتواصل بشأن الطلب. لا تدخل كلمة مرور فودافون أو فودافون كاش هنا.</p>
+        <div class="secure-note"><span>✦</span><div><b>بياناتك تفضل معاك</b><small>هذا النموذج لا يطلب كلمات مرور حساباتك ولا ينفذ دفعًا تلقائيًا.</small></div></div>
+      </div>
+      <form class="order-card" id="orderForm">
+        <label for="selectedBundle">الباقة المختارة</label>
+        <select id="selectedBundle" required><option value="">اختار باقة من القائمة</option></select>
+        <label for="phone">رقم الموبايل</label>
+        <input id="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="01XXXXXXXXX" maxlength="11" required>
+        <label for="customerName">الاسم (اختياري)</label>
+        <input id="customerName" type="text" autocomplete="name" placeholder="اكتب اسمك">
+        <div class="total-row"><span>إجمالي الطلب</span><strong id="totalPrice">— ج.م</strong></div>
+        <button class="primary-btn submit-btn" type="submit">مراجعة الطلب <span>←</span></button>
+        <p class="form-message" id="formMessage" role="status"></p>
+      </form>
+    </section>
+
+    <section class="section how" id="how">
+      <div class="section-head"><div><span class="eyebrow">ببساطة</span><h2>طريقة الطلب</h2></div></div>
+      <div class="steps">
+        <article><span>01</span><h3>اختار الباقة</h3><p>راجع الباقات والأسعار وحدد المناسب لك.</p></article>
+        <article><span>02</span><h3>اكتب رقمك</h3><p>أدخل رقم الموبايل الصحيح لمتابعة الطلب.</p></article>
+        <article><span>03</span><h3>راجع التفاصيل</h3><p>تأكد من الباقة والسعر قبل إرسال الطلب.</p></article>
+        <article><span>04</span><h3>تأكيد التنفيذ</h3><p>يتم التأكيد يدويًا حتى تربط المتجر بنظام دفع وتفعيل فعلي.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <a class="brand" href="#"><span class="brand-mark">AS</span><span><b>Ahmed <i>Shokr</i></b><small>MOBILE BUNDLES STORE</small></span></a>
+    <div><b>محتاج مساعدة؟</b><p>أضف رابط واتساب الخاص بك داخل ملف <code>script.js</code>.</p></div>
+    <small>© <span id="year"></span> Ahmed Shokr — جميع الحقوق محفوظة.</small>
+  </footer>
+
+  <dialog id="reviewDialog">
+    <form method="dialog" class="dialog-card">
+      <button class="close-dialog" aria-label="إغلاق">×</button>
+      <span class="eyebrow">مراجعة الطلب</span><h2>تأكد من التفاصيل</h2>
+      <div id="reviewDetails"></div>
+      <p class="fine-print">هذه معاينة فقط؛ لن يتم خصم أموال أو تفعيل باقة من هذا الموقع وحده.</p>
+      <div class="dialog-actions"><button class="secondary-btn" value="cancel">تعديل الطلب</button><button class="primary-btn" id="sendWhatsApp" type="button">إرسال عبر واتساب</button></div>
+    </form>
+  </dialog>
+  <script src="script.js"></script>
+</body>
+</html>
