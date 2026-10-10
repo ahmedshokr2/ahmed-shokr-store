@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="متجر Ahmed Shokr لطلبات باقات فليكس وشحن الرصيد.">
+  <title>Ahmed Shokr | متجر الباقات</title>
+
+  <style>
+    /* 1) إعدادات عامة وألوان الموقع */
+    :root {
+      --bg: #07130f;
+      --panel: #10221b;
+      --panel-light: #173126;
+      --green: #39d98a;
+      --text: #f4fff8;
+      --muted: #b4c8bc;
+      --border: #2c493a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: auto;
+    }
+
+    /* 2) شريط أعلى الموقع */
+    header {
+      border-bottom: 1px solid var(--border);
+      background: #091a13;
+    }
+
+    .topbar {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+
+    .brand span {
+      color: var(--green);
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+    }
+
+    nav a:hover {
+      color: var(--green);
+    }
+
+    /* 3) مقدمة المتجر */
+    .hero {
+      padding: 64px 0 42px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--green);
+      border: 1px solid var(--border);
+      padding: 4px 14px;
+      border-radius: 999px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      line-height: 1.25;
+      margin: 18px 0 12px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 0 auto 24px;
+      color: var(--muted);
+    }
+
+    .button {
+      display: inline-block;
+      border: 0;
+      border-radius: 12px;
+      padding: 12px 18px;
+      background: var(--green);
+      color: #062015;
+      text-decoration: none;
+      font: inherit;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      filter: brightness(1.08);
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    /* 4) بطاقات الباقات */
+    section {
+      padding: 34px 0;
+    }
+
+    .section-title {
+      margin: 0 0 8px;
+      font-size: 1.8rem;
+    }
+
+    .section-note {
+      margin: 0 0 22px;
+      color: var(--muted);
+    }
+
+    .bundle-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .bundle-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px;
+    }
+
+    .bundle-card.featured {
+      border-color: var(--green);
+      box-shadow: 0 0 0 1px var(--green);
+    }
+
+    .bundle-card h3 {
+      margin: 0 0 8px;
+    }
+
+    .bundle-card p {
+      color: var(--muted);
+      min-height: 52px;
+    }
+
+    .price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 14px 0;
+    }
+
+    .price small {
+      font-size: .85rem;
+      color: var(--muted);
+    }
+
+    /* 5) نموذج الطلب */
+    .order-panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 26px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin: 14px 0 6px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #081810;
+      color: var(--text);
+      font: inherit;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: 2px solid var(--green);
+      outline-offset: 1px;
+    }
+
+    .total-box {
+      margin: 16px 0;
+      padding: 14px;
+      border-radius: 12px;
+      background: var(--panel-light);
+    }
+
+    .total-box strong {
+      color: var(--green);
+      font-size: 1.35rem;
+    }
+
+    .notice {
+      color: var(--muted);
+      font-size: .9rem;
+      border-right: 3px solid var(--green);
+      padding-right: 12px;
+      margin: 16px 0;
+    }
+
+    .status-message {
+      min-height: 28px;
+      color: var(--green);
+    }
+
+    /* 6) تذييل الصفحة وزر واتساب */
+    footer {
+      margin-top: 40px;
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 18px;
+      left: 18px;
+      z-index: 10;
+      box-shadow: 0 8px 24px #0006;
+    }
+
+    /* 7) تصميم مناسب للموبايل */
+    @media (max-width: 760px) {
+      .topbar {
+        padding: 14px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .bundle-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .order-panel {
+        grid-template-columns: 1fr;
+        padding: 18px;
+      }
+
+      .bundle-card p {
+        min-height: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- شريط أعلى الصفحة -->
+  <header>
+    <div class="container topbar">
+      <div class="brand">Ahmed <span>Shokr</span></div>
+      <nav aria-label="التنقل الرئيسي">
+        <a href="#bundles">الباقات</a>
+        <a href="#order">اطلب الآن</a>
+        <a href="#payment">الدفع</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- مقدمة الموقع -->
+    <section class="hero container">
+      <span class="eyebrow">متجر الباقات</span>
+      <h1>اختار باقتك واطلب بسهولة</h1>
+      <p>اختار الباقة المناسبة، اكتب بيانات التواصل، ثم راجع تفاصيل الطلب وأرسله إلى أحمد عبر واتساب.</p>
+      <a class="button" href="#bundles">شاهد الباقات</a>
+    </section>
+
+    <!-- الباقات -->
+    <section class="container" id="bundles">
+      <h2 class="section-title">الباقات المتاحة</h2>
+      <p class="section-note">راجع السعر قبل التحويل. الأسعار الموجودة أمثلة قابلة للتعديل.</p>
+
+      <div class="bundle-grid">
+        <article class="bundle-card featured">
+          <h3>10400 فليكس</h3>
+          <p>باقة فليكس — تأكد من تفاصيل التفعيل قبل الطلب.</p>
+          <div class="price">320 <small>جنيه</small></div>
+          <button class="button choose-bundle" type="button" data-bundle="10400 فليكس">اختار الباقة</button>
+        </article>
+
+        <article class="bundle-card">
+          <h3>5200 فليكس</h3>
+          <p>باقة فليكس — راجع السعر والتفاصيل قبل الدفع.</p>
+          <div class="price">320 <small>جنيه</small></div>
+          <button class="button choose-bundle" type="button" data-bundle="5200 فليكس">اختار الباقة</button>
+        </article>
+
+        <article class="bundle-card">
+          <h3>6500 فليكس</h3>
+          <p>السعر النهائي يتم تأكيده مع أحمد قبل الدفع.</p>
+          <div class="price">يُحدد لاحقًا</div>
+          <button class="button choose-bundle" type="button" data-bundle="6500 فليكس">اختار الباقة</button>
+        </article>
+
+        <article class="bundle-card">
+          <h3>2600 فليكس</h3>
+          <p>السعر النهائي يتم تأكيده مع أحمد قبل الدفع.</p>
+          <div class="price">يُحدد لاحقًا</div>
+          <button class="button choose-bundle" type="button" data-bundle="2600 فليكس">اختار الباقة</button>
+        </article>
+
+        <article class="bundle-card">
+          <h3>باقة أخرى</h3>
+          <p>لو محتاج باقة مختلفة، اكتب تفاصيلها في الملاحظات.</p>
+          <div class="price">يُحدد لاحقًا</div>
+          <button class="button choose-bundle" type="button" data-bundle="باقة أخرى">اختار الباقة</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- بيانات الطلب -->
+    <section class="container" id="order">
+      <h2 class="section-title">بيانات الطلب</h2>
+      <p class="section-note">املأ البيانات المطلوبة، ثم افتح رسالة واتساب لمراجعتها وإرسالها.</p>
+
+      <div class="order-panel">
+        <form id="orderForm">
+          <label for="bundle">اختار الباقة</label>
+          <select id="bundle" name="bundle" required>
+            <option value="">-- اختار باقة --</option>
+            <option value="10400 فليكس">10400 فليكس — 320 جنيه (سعر تجريبي)</option>
+            <option value="5200 فليكس">5200 فليكس — 320 جنيه (سعر تجريبي)</option>
+            <option value="6500 فليكس">6500 فليكس — السعر يُؤكد لاحقًا</option>
+            <option value="2600 فليكس">2600 فليكس — السعر يُؤكد لاحقًا</option>
+            <option value="باقة أخرى">باقة أخرى</option>
+          </select>
+
+          <label for="customerName">اسم العميل (اختياري)</label>
+          <input id="customerName" name="customerName" autocomplete="name" placeholder="اكتب اسمك">
+
+          <label for="phone">رقم الموبايل المراد تفعيل الباقة عليه</label>
+          <input id="phone" name="phone" type="tel" inputmode="numeric"
+                 pattern="01[0125][0-9]{8}" maxlength="11"
+                 placeholder="01xxxxxxxxx" required>
+          <small>اكتب رقمًا مصريًا من 11 رقمًا.</small>
+
+          <label for="payment">طريقة الدفع المفضلة</label>
+          <select id="payment" name="payment" required>
+            <option value="">-- اختار طريقة الدفع --</option>
+            <option value="إنستا باي">إنستا باي</option>
+            <option value="تحويل">تحويل</option>
+            <option value="كاش">كاش بالتنسيق مع أحمد</option>
+          </select>
+
+          <label for="notes">ملاحظات (اختياري)</label>
+          <textarea id="notes" name="notes" rows="3" placeholder="أي تفاصيل إضافية عن الطلب"></textarea>
+
+          <div class="total-box">
+            الإجمالي المبدئي:
+            <strong id="total">—</strong>
+          </div>
+
+          <p class="notice">لا تكتب كلمة مرور تطبيق أنا فودافون أو رمز التحقق OTP في هذا النموذج أو في واتساب.</p>
+
+          <button class="button" type="submit">جهّز رسالة الطلب</button>
+          <p id="formMessage" class="status-message" role="status"></p>
+        </form>
+
+        <!-- معلومات الدفع والتواصل -->
+        <aside id="payment">
+          <h2>الدفع والتأكيد</h2>
+          <p>اختار طريقة الدفع داخل النموذج، وتأكد من السعر وبيانات التحويل مع أحمد قبل إرسال أي مبلغ.</p>
+          <p><strong>رابط إنستا باي:</strong><br>
+            <a href="https://ipn.eg/S/ahmed.shokr1/instapay/6puImD"
+               target="_blank" rel="noopener noreferrer">فتح رابط الدفع</a>
+          </p>
+          <p><strong>رقم التحويل المذكور:</strong> 01012639004</p>
+          <p class="notice">بعد التحويل، ابعت صورة إثبات الدفع في محادثة واتساب. مراجعة الدفع والتأكيد يدويان؛ الموقع لا يتحقق تلقائيًا من وصول الأموال.</p>
+          <a class="button secondary" href="https://wa.me/201070424120"
+             target="_blank" rel="noopener noreferrer">تواصل مع أحمد على واتساب</a>
+          <p id="orderSummary"></p>
+          <button class="button" id="sendOrder" type="button" hidden>إرسال الطلب على واتساب</button>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Ahmed Shokr — متجر الباقات
+    </div>
+  </footer>
+
+  <a class="button whatsapp-float" href="https://wa.me/201070424120"
+     target="_blank" rel="noopener noreferrer" aria-label="التواصل عبر واتساب">واتساب</a>
+
+  <script>
+    // رقم واتساب بصيغة دولية، بدون علامة +
+    const WHATSAPP_NUMBER = "201070424120";
+
+    // أسعار المثال: عدّلها بعد التأكد من الأسعار الفعلية.
+    const PRICES = {
+      "10400 فليكس": 320,
+      "5200 فليكس": 320,
+      "6500 فليكس": null,
+      "2600 فليكس": null,
+      "باقة أخرى": null
+    };
+
+    const form = document.getElementById("orderForm");
+    const bundleSelect = document.getElementById("bundle");
+    const totalElement = document.getElementById("total");
+    const formMessage = document.getElementById("formMessage");
+    const orderSummary = document.getElementById("orderSummary");
+    const sendOrderButton = document.getElementById("sendOrder");
+
+    let whatsappMessage = "";
+
+    // يحوّل السعر إلى نص مناسب للعرض.
+    function formatPrice(price) {
+      return price === null ? "يُحدد بعد التأكيد" : `${price} جنيه`;
+    }
+
+    // يحدّث الإجمالي عندما يختار العميل باقة.
+    function updateTotal() {
+      const selectedBundle = bundleSelect.value;
+      const price = PRICES[selectedBundle];
+
+      totalElement.textContent = selectedBundle
+        ? formatPrice(price)
+        : "—";
+    }
+
+    bundleSelect.addEventListener("change", updateTotal);
+
+    // أزرار الباقات تنقل الاختيار إلى نموذج الطلب.
+    document.querySelectorAll(".choose-bundle").forEach((button) => {
+      button.addEventListener("click", () => {
+        bundleSelect.value = button.dataset.bundle;
+        updateTotal();
+        document.getElementById("order").scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      });
+    });
+
+    // عند إرسال النموذج، نجهّز الرسالة فقط ولا نرسلها تلقائيًا.
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (!form.reportValidity()) {
+        return;
+      }
+
+      const selectedBundle = bundleSelect.value;
+      const price = PRICES[selectedBundle];
+      const name = document.getElementById("customerName").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const payment = document.getElementById("payment").value;
+      const notes = document.getElementById("notes").value.trim();
+
+      whatsappMessage =
+        "طلب باقة جديد — Ahmed Shokr\n" +
+        "الباقة: " + selectedBundle + "\n" +
+        "السعر: " + formatPrice(price) + "\n" +
+        "رقم العميل: " + phone + "\n" +
+        "الاسم: " + (name || "لم يذكر") + "\n" +
+        "طريقة الدفع المفضلة: " + payment + "\n" +
+        "الملاحظات: " + (notes || "لا توجد") + "\n" +
+        "الحالة: بانتظار مراجعة الطلب والدفع يدويًا.";
+
+      orderSummary.textContent = "راجع الرسالة التي ستُفتح في واتساب، وتأكد من السعر قبل الدفع.";
+      formMessage.textContent = "تم تجهيز الطلب. اضغط زر إرسال الطلب لفتحه في واتساب.";
+      sendOrderButton.hidden = false;
+    });
+
+    // يفتح واتساب ومعه نص الطلب؛ العميل يراجعه ويضغط إرسال بنفسه.
+    sendOrderButton.addEventListener("click", () => {
+      if (!whatsappMessage) {
+        formMessage.textContent = "املأ نموذج الطلب أولًا.";
+        return;
+      }
+
+      const url =
+        "https://wa.me/" + WHATSAPP_NUMBER +
+        "?text=" + encodeURIComponent(whatsappMessage);
+
+      window.open(url, "_blank", "noopener,noreferrer");
+    });
+
+    // السنة الحالية في أسفل الصفحة.
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // عرض السعر الصحيح عند فتح الصفحة.
+    updateTotal();
+  </script>
+</body>
+</html>
